@@ -1,15 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const links = [
   {
     href: "/",
-    text: "Page1",
+    text: "Home",
   },
   {
-    href: "/questions",
-    text: "Questions",
+    href: "/study",
+    text: "Study",
   },
   {
     href: "/questions",
@@ -18,19 +20,23 @@ const links = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+
+  console.log(pathname);
+
   return (
-    <header className="flex justify-between shadow-md p-3">
+    <header className="flex justify-between px-5 py-3 shadow">
       <Image
-        className="flex-none rounded-md mx-1"
+        className="mx-1 flex-none rounded-md"
         alt="logo"
         src="edu.svg"
         width={50}
         height={50}
       />
-      <nav className="flex gap-3 items-center mx-3">
+      <nav className="mx-3 flex items-center gap-6">
         {links.map((link, index) => (
           <Link
-            className="font-semibold text-zinc-400 text-lg"
+            className={`text-lg font-semibold ${pathname === link.href ? "text-zinc-800" : "text-zinc-400"}`}
             key={index + 10}
             href={link.href}
           >

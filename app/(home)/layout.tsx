@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "app/globals.css";
 import Header from "app/common/Header";
 import Footer from "app/common/Footer";
+import Container from "app/common/Container";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-zinc-100 text-zinc-900 min-h-screen flex flex-col`}
+        className={`${inter.className} bg-zinc-200 text-zinc-900 min-h-screen`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Container>
+          <Header />
+          {children}
+          <Footer />
+        </Container>
       </body>
     </html>
   );
